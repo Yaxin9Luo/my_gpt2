@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpt2"
+version = "0.0.1"
+description = "This is our gpt2 model for dtu\u0027s mlops course exam project, it needs at least a single 8 * A100 nodes for pre-training gpt2-small(124M) on open source dataset OpenWebText for 4 days, so we choose to finetune gpt2-xl(1.5B) version on Shaespeare documents obased on our access to a server with 6 A100 GPUs."
+authors = [
+  { name = "Yaxin", email = "your@email.com" },
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.11"
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools]
+packages = ["gpt2"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.dynamic.optional-dependencies]
+dev = {file = ['requirements_dev.txt']}
+
+[tool.ruff]
+line-length = 120
