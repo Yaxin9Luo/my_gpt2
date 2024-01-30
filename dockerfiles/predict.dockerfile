@@ -17,4 +17,8 @@ RUN pip install . --no-deps --no-cache-dir
 WORKDIR /app/gpt2
 # Change to gpt2 directory before running the script
 
-CMD ["python", "inference.py", "--out_dir=/app/out-shakespeare-char", "--device=cpu"]
+EXPOSE $PORT
+CMD exec uvicorn my_application:app --port $PORT --workers 1 main:app
+
+# CMD ["python", "inference.py", "--out_dir=/app/out-shakespeare-char", "--device=cpu"]
+
